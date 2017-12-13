@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "AdminBox theme",
+  "name": "Simple page email for AdminBox template",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "192x192",
+      "sizes": "70x70",
       "type": "image/png"
     }
   ],

@@ -1,76 +1,107 @@
 // Core
 import React, { Component } from 'react';
-import { func, object } from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 
 // Instruments
 import Styles from './styles.scss';
+import { getRandomColor } from '../../helpers';
 
 export default class Composer extends Component {
+    static contextTypes = {
+        firstName: string.isRequired,
+    };
+
     static propTypes = {
-        createPost: func.isRequired,
-        profile:    object.isRequired,
+        avatar:     string.isRequired,
+        createPost: PropTypes.func,
     };
 
     constructor () {
         super();
-
         this.handleSubmit = ::this._handleSubmit;
-        this.handleTextareaChange = ::this._handleTextareaChange;
-        this.handleTextareaKeyPress = ::this._handleTextareaKeyPress;
-        this.createPost = ::this._createPost;
+        this.handleTextArea = ::this._handleTextArea;
+        this.dontCopy = ::this._dontCopy;
+        this.handleKeyPress = ::this._handleKeyPress;
+        //this.dontSelect = ::this._dontSelect;
     }
 
     state = {
-        comment: '',
+        comment:     '',
+        styleButton: 'buttonReadOnly',
+        selected:    false,
+        borderColor: '#fff',
     };
 
     _handleSubmit (event) {
         event.preventDefault();
-        this._createPost();
-    }
+        if (this.state.comment === '') {
+            this.setState(() => ({ styleButton: 'buttonReadOnly' }));
 
-    _createPost () {
-        const { comment } = this.state;
-
-        if (!comment) {
             return;
         }
+        this.props.createPost(this.state.comment);
+        this.setState(() => ({ comment: '', styleButton: 'buttonReadOnly' }));
+    }
 
-        this.props.createPost(comment);
+    _handleTextArea (event) {
+        const { value: comment } = event.target;
 
         this.setState(() => ({
-            comment: '',
+            comment,
+            styleButton: 'buttonDone',
+            borderColor: getRandomColor(),
         }));
     }
 
-    _handleTextareaChange (event) {
-        const { value: comment } = event.target;
-
-        this.setState(() => ({ comment }));
+    _dontCopy (e) {
+        e.target.unselectable = 'on';
+        e.preventDefault();
     }
 
-    _handleTextareaKeyPress (event) {
-        if (event.key === 'Enter') {
-            event.preventDefault();
-            this.createPost();
+    /*_dontSelect () {
+        e.preventDefault();
+        this.setState(() => ({ selected: false }));
+        const element = e.target;
+
+        if (element.selection && element.selection.empty) {
+            element.selection.empty();
+        }
+
+        element.removeAllRanges();
+    }*/
+
+    _handleKeyPress (e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            this.props.createPost(this.state.comment);
+            this.setState(() => ({
+                comment:     '',
+                styleButton: 'buttonReadOnly',
+            }));
         }
     }
 
     render () {
-        const { profile: { avatar, firstName }} = this.props;
-        const { comment } = this.state;
+        const { firstName } = this.context;
+        const { avatar } = this.props;
+        const { comment, borderColor } = this.state;
 
         return (
-            <section className = { Styles.composer }>
-                <img src = { avatar } />
+            <section className = { Styles.composer } style = { { borderColor } }>
+                <img alt = 'homer' src = { avatar } />
                 <form onSubmit = { this.handleSubmit }>
                     <textarea
-                        placeholder = { `What's on your mind, ${firstName}?` }
+                        placeholder = { `What's on your mind, ${firstName}` }
                         value = { comment }
-                        onChange = { this.handleTextareaChange }
-                        onKeyPress = { this.handleTextareaKeyPress }
+                        onChange = { this.handleTextArea }
+                        onCopy = { this.dontCopy }
+                        onKeyPress = { this.handleKeyPress }
                     />
-                    <input type = 'submit' value = 'Post' />
+                    <input
+                        className = { Styles[this.state.styleButton] }
+                        type = 'submit'
+                        value = 'Post'
+                    />
                 </form>
             </section>
         );

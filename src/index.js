@@ -1,11 +1,11 @@
 // Core
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 
 // Instruments
 import './theme/reset.css';
 
-// Flux
-import Book from './flux/components/Book';
+// App
+import App from './containers/App';
 
-render(<Book />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('adminbox'));

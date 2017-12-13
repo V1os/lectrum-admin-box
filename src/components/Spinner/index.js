@@ -1,18 +1,13 @@
 // Core
 import React from 'react';
-import { bool } from 'prop-types';
 import { createPortal } from 'react-dom';
 
 // Instruments
 import Styles from './styles';
 
-const portal = document.getElementById('spinner');
+const spinner = document.getElementById('spinner');
 
-const Spinner = ({ spin }) =>
-    spin ? createPortal(<section className = { Styles.spinner } />, portal) : null;
-
-Spinner.propTypes = {
-    spin: bool.isRequired,
-};
+const Spinner = () =>
+    createPortal(<div className = { Styles.spinner }> &#8756; </div>, spinner);
 
 export default Spinner;

@@ -1,41 +1,34 @@
 // Core
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { object, array, oneOfType } from 'prop-types';
 
-// Instruments
+// Instrument
 import Styles from './styles.scss';
 
 export default class Catcher extends Component {
     static propTypes = {
-        children: PropTypes.object.isRequired,
+        children: oneOfType([object.isRequired, array.isRequired]),
     };
 
     state = {
-        error: false,
+        hasError: false,
     };
 
-    componentDidCatch (error, stack) {
-        console.log('ERROR:', error.message);
-        console.log('STACKTRACE:', stack.componentStack);
+    componentDidCatch (error, info) {
+        console.warn('ERROR:', error.message);
+        console.info('STACKTRACE:', info.componentStack);
 
-        this.setState(() => ({
-            error: true,
-        }));
+        this.setState(() => ({ hasError: true }));
     }
 
     render () {
-        const { error } = this.state;
+        const { hasError } = this.state;
         const { children } = this.props;
 
-        if (error) {
+        if (hasError) {
             return (
                 <section className = { Styles.catcher }>
-                    <span>A mysterious 👽 &nbsp;error 📛 &nbsp;occured.</span>
-                    <p>
-                        Our space 🛰 &nbsp;engineers strike team 👩🏼‍🚀 👨🏼‍🚀
-                        &nbsp;is already working 🚀 &nbsp;in order to fix that
-                        for you!
-                    </p>
+                    <p>Error have</p>
                 </section>
             );
         }
