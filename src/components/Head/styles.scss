@@ -1,9 +1,63 @@
 @import '../../theme/palette';
 
-.head {}
-.logo{}
-.line{}
-.notify{}
-.menu{}
-.user{}
-.search{}
+.head {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: 80px;
+}
+
+.logo {
+  width: 265px;
+  background: $colorBlue url('../../theme/assets/sprite.png') no-repeat 0 1px;
+}
+
+.line {
+  display: flex;
+  box-sizing: border-box;
+  flex-basis: 50%;
+  flex-grow: 4;
+  align-items: stretch;
+  border-bottom: 1px solid $colorGrey;
+  cursor: pointer;
+
+  .notify {
+    margin-left: 9px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    span {
+      display: block;
+      width: 38px;
+      height: 32px;
+      margin: 0 9px;
+      background: url('../../theme/assets/sprite.png') no-repeat 0 0;
+      cursor: pointer;
+
+      &:first-child {
+        height: 36px;
+        background-position: -4px -188px;
+      }
+
+      &:nth-child(2) {
+        width: 47px;
+        height: 38px;
+        background-position: -3px -268px;
+      }
+
+      &:last-child {
+        background-position: -4px -151px;
+      }
+    }
+  }
+  .menu {
+  }
+  .user {
+  }
+  .search {
+  }
+}
