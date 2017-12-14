@@ -1,63 +1,97 @@
 @import '../../theme/palette';
-
-.head {
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: 80px;
-}
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i&subset=devanagari,latin-ext');
 
 .logo {
-  width: 265px;
-  background: $colorBlue url('../../theme/assets/sprite.png') no-repeat 0 1px;
+    width: 265px;
+    background: $colorBlue url('../../theme/assets/sprite.png') no-repeat 0 1px;
+}
+
+.head {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
 }
 
 .line {
-  display: flex;
-  box-sizing: border-box;
-  flex-basis: 50%;
-  flex-grow: 4;
-  align-items: stretch;
-  border-bottom: 1px solid $colorGrey;
-  cursor: pointer;
+    display: flex;
+    box-sizing: border-box;
+    flex-basis: 50%;
+    flex-grow: 4;
+    align-items: stretch;
+    justify-content: space-between;
+    border-bottom: 1px solid $colorGrey;
+    cursor: pointer;
+}
 
-  .notify {
-    margin-left: 9px;
+.lineEnd {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.notify {
     display: flex;
     flex-direction: row;
     align-items: center;
-
+    margin-left: 9px;
     span {
-      display: block;
-      width: 38px;
-      height: 32px;
-      margin: 0 9px;
-      background: url('../../theme/assets/sprite.png') no-repeat 0 0;
-      cursor: pointer;
-
-      &:first-child {
-        height: 36px;
-        background-position: -4px -188px;
-      }
-
-      &:nth-child(2) {
-        width: 47px;
-        height: 38px;
-        background-position: -3px -268px;
-      }
-
-      &:last-child {
-        background-position: -4px -151px;
-      }
+        display: block;
+        width: 38px;
+        height: 32px;
+        margin: 0 9px;
+        background: url('../../theme/assets/sprite.png') no-repeat 0 0;
+        cursor: pointer;
+        &:first-child {
+            height: 36px;
+            background-position: -4px -188px;
+        }
+        &:nth-child(2) {
+            width: 47px;
+            height: 38px;
+            background-position: -3px -268px;
+        }
+        &:last-child {
+            background-position: -4px -151px;
+        }
     }
-  }
-  .menu {
-  }
-  .user {
-  }
-  .search {
-  }
+}
+
+.menu {
+    margin: 0 30px;
+    color: $colorBlue;
+    font-size: 18pt;
+    line-height: 62pt;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    img {
+        margin: 0 3px;
+    }
+    p {
+        color: $colorGreyDark;
+        font-weight: 400;
+    }
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    input {
+        width: 365px;
+        height: 42px;
+        padding-left: 20px;
+        border: 0;
+        border-radius: 21px;
+        outline: none;
+        background: $colorGreyLite url('../../theme/assets/search.png') no-repeat 345px 8px;
+        color: $colorGreyDark;
+    }
 }

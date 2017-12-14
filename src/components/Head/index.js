@@ -24,16 +24,20 @@ export default class Head extends Component {
                         <span />
                         <span />
                     </div>
-                    <div className = { Styles.search }>
-                        <input name = 'search' placeholder = 'Search' />
+                    <div className = { Styles.lineEnd }>
+                        <div className = { Styles.search }>
+                            <input name = 'search' placeholder = 'Search' />
+                        </div>
+                        <div className = { Styles.user }>
+                            <img src = { avatar } title = 'avatar' />
+                            <p>
+                                {`${firstName} ${lastName}`} <i />
+                            </p>
+                        </div>
+                        <div className = { Styles.menu }>
+                            &#8226;&#8202;&#8226;&#8202;&#8226;
+                        </div>
                     </div>
-                    <div className = { Styles.user }>
-                        <img src = { avatar } title = 'asvatar' />
-                        <p>
-                            {`${firstName} ${lastName}`} <i />
-                        </p>
-                    </div>
-                    <div className = { Styles.menu }>&#8230;</div>
                 </div>
             </section>
         );

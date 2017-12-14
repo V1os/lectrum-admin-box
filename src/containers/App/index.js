@@ -20,10 +20,6 @@ export default class App extends Component {
         lastName:  string.isRequired,
     };
 
-    constructor () {
-        super();
-    }
-
     getChildContext () {
         return options;
     }

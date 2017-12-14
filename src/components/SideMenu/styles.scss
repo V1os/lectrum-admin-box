@@ -1,6 +1,9 @@
 @import '../../theme/palette';
 
 .sideMenu {
-  width: 268px;
-  background-color: $colorSideBG;
+    display: flex;
+    flex-direction: column;
+    width: 268px;
+    padding-top: 32px;
+    background-color: $colorSideBG;
 }
