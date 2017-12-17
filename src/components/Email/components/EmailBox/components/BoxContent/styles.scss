@@ -1,0 +1,7 @@
+@import '../../../../../../theme/palette';
+
+.boxContent {
+    display: flex;
+    flex: 1 0 50%;
+    background-color: $colorBoxBG;
+}

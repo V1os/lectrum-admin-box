@@ -1,0 +1,17 @@
+@import './../../../../../../theme/palette';
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 84px;
+    border-bottom: 1px solid $colorGrey;
+    background-color: $colorBoxBG;
+    h1 {
+        align-self: center;
+        margin-left: 25px;
+        color: $colorGreyDarkText;
+        font-size: 24px;
+        font-weight: 300;
+    }
+}

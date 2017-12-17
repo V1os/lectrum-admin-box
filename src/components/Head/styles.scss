@@ -79,19 +79,3 @@
         font-weight: 400;
     }
 }
-
-.search {
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
-    input {
-        width: 365px;
-        height: 42px;
-        padding-left: 20px;
-        border: 0;
-        border-radius: 21px;
-        outline: none;
-        background: $colorGreyLite url('../../theme/assets/search.png') no-repeat 345px 8px;
-        color: $colorGreyDark;
-    }
-}

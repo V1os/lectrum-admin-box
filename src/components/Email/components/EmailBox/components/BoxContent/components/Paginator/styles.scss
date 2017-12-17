@@ -1,0 +1,151 @@
+@import '../../../../../../../../theme/palette';
+@mixin inputChecked() {
+    content: '\2714';
+    display: block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    color: $colorGreen;
+    font-size: 26px;
+    font-weight: 100;
+    line-height: 22px;
+    text-align: center;
+}
+
+@mixin input() {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    border: 2px solid $colorGrey;
+    border-radius: 25%;
+}
+
+.paginate {
+    display: block;
+    position: relative;
+    width: 100%;
+    color: $colorGreyText;
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        p {
+            flex-direction: row;
+            label {
+                display: inline-block;
+                margin-right: 15px;
+                font-size: 14px;
+                font-weight: 300;
+                line-height: 22px;
+                input {
+                    position: relative;
+                    z-index: -9999;
+                    width: 0;
+                    &:checked + span::before {
+                        @include inputChecked();
+                    }
+                }
+                span {
+                    @include input();
+                }
+            }
+            label:first-child input {
+                margin-left: 25px;
+            }
+            button {
+                width: 20px;
+                height: 20px;
+                margin: 0 2px;
+                border: 1px solid $colorGrey;
+                background: transparent;
+                text-align: center;
+                cursor: pointer;
+                &:hover {
+                    background: $colorBlue;
+                    color: $colorWhite;
+                }
+            }
+            &:last-child {
+                margin-right: 25px;
+            }
+        }
+        &:first-child {
+            border-bottom: 1px solid $colorGrey;
+        }
+        &:last-child {
+            padding: 25px 0 50px 25px;
+        }
+    }
+    table {
+        width: 100%;
+        tr {
+            height: 61px;
+            border-bottom: 1px solid $colorGrey;
+            td {
+                overflow: hidden;
+                border-bottom: 1px solid $colorGrey;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                &:first-child {
+                    display: table-cell;
+                    min-width: 50px;
+                    height: 61px;
+                    padding-left: 25px;
+                    vertical-align: middle;
+                    input:first-child {
+                        position: relative;
+                        z-index: -9999;
+                        width: 0;
+                        &:checked + span::before {
+                            @include inputChecked();
+                        }
+                    }
+                    span {
+                        @include input();
+                    }
+                }
+                &:nth-child(2) {
+                    display: table-cell;
+                    min-width: 50px;
+                    height: 61px;
+                    margin-top: 1px;
+                    vertical-align: sub;
+                    input:first-child {
+                        position: relative;
+                        z-index: -9999;
+                        width: 0;
+                        &:checked + span::before {
+                            display: block;
+                            position: absolute;
+                            width: 26px;
+                            height: 26px;
+                            background-position: -184px -80px;
+                        }
+                    }
+                    span {
+                        display: block;
+                        width: 26px;
+                        height: 26px;
+                        background: url('../../../../../../../../theme/assets/sprite.png') no-repeat -214px -80px;
+                    }
+                }
+                &:nth-child(3) {
+                    max-width: 250px;
+                }
+                &:nth-child(4) {
+                    max-width: 400px;
+                }
+                &:last-child {
+                    padding-right: 25px;
+                    text-align: right;
+                }
+            }
+            &:hover {
+                background-color: $colorWhite;
+            }
+        }
+    }
+}
