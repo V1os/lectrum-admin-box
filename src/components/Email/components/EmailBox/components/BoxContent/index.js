@@ -1,6 +1,6 @@
 // Core
 import React, { Component } from 'react';
-import { array, string } from 'prop-types';
+import { array, func, string } from 'prop-types';
 
 //Instrument
 import Styles from './styles.scss';
@@ -11,6 +11,7 @@ export default class BoxContent extends Component {
     static propTypes = {
         context: array.isRequired,
         route:   string.isRequired,
+        onRoute: func.isRequired,
     };
 
     render () {

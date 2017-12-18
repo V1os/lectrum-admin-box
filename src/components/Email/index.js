@@ -9,31 +9,46 @@ import faker from 'faker';
 import moment from 'moment/moment';
 
 export default class Email extends Component {
+    constructor () {
+        super();
+        this.setRoute = ::this._setRoute;
+    }
+
     state = {
-        total: 127,
+        total:        127,
+        routeList:    ['inbox', 'compose'],
+        routeCurrent: 'inbox',
+        data:         [],
     };
 
     genData = () => {
         faker.locale = 'ru';
-        const data = [];
         let time = moment();
 
-        for (let i = 0; i < this.state.total; i++) {
-            const diff = Math.random() * 10;
+        if (this.state.data.length === 0) {
+            for (let i = 0; i < this.state.total; i++) {
+                const diff = Math.random() * 10;
 
-            time = moment()
-                .set(time)
-                .add(-diff, 'day');
-            data.push({
-                id:        i,
-                subject:   faker.commerce.productName(),
-                shortText: faker.hacker.phrase(),
-                date:      moment(time).format('ll'),
-            });
+                time = moment()
+                    .set(time)
+                    .add(-diff, 'day');
+                this.state.data.push({
+                    id:        i,
+                    subject:   faker.commerce.productName(),
+                    shortText: faker.hacker.phrase(),
+                    date:      moment(time).format('ll'),
+                });
+            }
         }
 
-        return data;
+        return this.state.data;
     };
+
+    _setRoute (route) {
+        this.setState(() => ({
+            routeCurrent: route,
+        }));
+    }
 
     render () {
         return (
@@ -43,8 +58,12 @@ export default class Email extends Component {
                     <p>Home / Email</p>
                 </div>
                 <div>
-                    <EmailSideBar />
-                    <EmailBox context = { this.genData() } />
+                    <EmailSideBar onRoute = { this.setRoute } />
+                    <EmailBox
+                        context = { this.genData() }
+                        routeCurrent = { this.state.routeCurrent }
+                        onRoute = { this.setRoute }
+                    />
                 </div>
             </section>
         );

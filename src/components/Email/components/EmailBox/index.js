@@ -1,6 +1,6 @@
 // Core
 import React, { Component } from 'react';
-import { array } from 'prop-types';
+import { array, string, func } from 'prop-types';
 
 //Instruments
 import Styles from './styles.scss';
@@ -9,21 +9,21 @@ import BoxContent from './components/BoxContent';
 
 export default class EmailBox extends Component {
     static propTypes = {
-        context: array.isRequired,
-    };
-
-    state = {
-        routeList:    ['inbox', 'compose'],
-        routeCurrent: 'compose',
+        context:      array.isRequired,
+        onRoute:      func.isRequired,
+        routeCurrent: string,
     };
 
     render () {
+        const { routeCurrent, context, onRoute } = this.props;
+
         return (
             <section className = { Styles.box }>
-                <BoxHead search route = { this.state.routeCurrent } />
+                <BoxHead search route = { routeCurrent } />
                 <BoxContent
-                    context = { this.props.context }
-                    route = { this.state.routeCurrent }
+                    context = { context }
+                    route = { routeCurrent }
+                    onRoute = { onRoute }
                 />
             </section>
         );

@@ -1,12 +1,20 @@
 import React from 'react';
-import { string, object } from 'prop-types';
+import { string, object, func } from 'prop-types';
 import classNames from 'classnames';
 
 // Instruments
 import Styles from './styles.scss';
 
 const SideMenuItem = (props) => {
-    const { name, options: { active, iconPosition }} = props;
+    const {
+        name,
+        options: { active, iconPosition },
+        route = 'inbox',
+        onRoute,
+    } = props;
+    const setRoute = () => {
+        onRoute(route);
+    };
 
     return (
         <div
@@ -15,7 +23,8 @@ const SideMenuItem = (props) => {
                 active !== undefined && active.hasOwnProperty('style')
                     ? Styles[active.style]
                     : ''
-            ) }>
+            ) }
+            onClick = { setRoute }>
             <i
                 className = { Styles.sideMenuItemIcon }
                 style = { {
@@ -34,6 +43,8 @@ const SideMenuItem = (props) => {
 SideMenuItem.propTypes = {
     name:    string.isRequired,
     options: object.isRequired,
+    route:   string,
+    onRoute: func,
 };
 
 export default SideMenuItem;
