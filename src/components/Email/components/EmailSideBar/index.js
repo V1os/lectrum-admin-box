@@ -43,7 +43,11 @@ export default class EmailSideBar extends Component {
 
     render () {
         const sideBarMenus = this.state.sideBarList.map((menu) => (
-            <SideMenuItem key = { menu.name } onRoute = { this.props.onRoute } { ...menu } />
+            <SideMenuItem
+                key = { menu.name }
+                onRoute = { this.props.onRoute }
+                { ...menu }
+            />
         ));
 
         return (

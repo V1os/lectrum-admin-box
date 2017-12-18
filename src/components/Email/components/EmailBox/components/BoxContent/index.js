@@ -1,6 +1,6 @@
 // Core
 import React, { Component } from 'react';
-import { array, func, string } from 'prop-types';
+import { array, func, string, number } from 'prop-types';
 
 //Instrument
 import Styles from './styles.scss';
@@ -12,15 +12,16 @@ export default class BoxContent extends Component {
         context: array.isRequired,
         route:   string.isRequired,
         onRoute: func.isRequired,
+        total:   number,
     };
 
     render () {
         let content = 'Empty';
-        const { context, route = 'inbox' } = this.props;
+        const { context, route = 'inbox', total } = this.props;
 
         switch (route) {
             case 'inbox':
-                content = <Inbox context = { context } />;
+                content = <Inbox context = { context } total = { total } />;
                 break;
             case 'compose':
                 content = <Composer />;

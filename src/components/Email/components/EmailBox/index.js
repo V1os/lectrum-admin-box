@@ -1,6 +1,6 @@
 // Core
 import React, { Component } from 'react';
-import { array, string, func } from 'prop-types';
+import { array, string, func, number } from 'prop-types';
 
 //Instruments
 import Styles from './styles.scss';
@@ -12,10 +12,11 @@ export default class EmailBox extends Component {
         context:      array.isRequired,
         onRoute:      func.isRequired,
         routeCurrent: string,
+        total:        number,
     };
 
     render () {
-        const { routeCurrent, context, onRoute } = this.props;
+        const { routeCurrent, context, onRoute, total } = this.props;
 
         return (
             <section className = { Styles.box }>
@@ -23,6 +24,7 @@ export default class EmailBox extends Component {
                 <BoxContent
                     context = { context }
                     route = { routeCurrent }
+                    total = { total }
                     onRoute = { onRoute }
                 />
             </section>

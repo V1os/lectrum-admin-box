@@ -62,6 +62,7 @@ export default class Email extends Component {
                     <EmailBox
                         context = { this.genData() }
                         routeCurrent = { this.state.routeCurrent }
+                        total = { this.state.total }
                         onRoute = { this.setRoute }
                     />
                 </div>
