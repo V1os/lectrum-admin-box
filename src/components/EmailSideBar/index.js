@@ -4,7 +4,7 @@ import { func } from 'prop-types';
 
 //Instruments
 import Styles from './styles.scss';
-import SideMenuItem from '../../../SideMenuItem';
+import SideMenuItem from '../SideMenuItem/index';
 
 export default class EmailSideBar extends Component {
     static propTypes = {

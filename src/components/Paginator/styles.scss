@@ -1,4 +1,5 @@
-@import '../../../../../../../../theme/palette';
+@import '../../theme/palette';
+
 @mixin inputChecked() {
     content: '\2714';
     display: block;
@@ -129,7 +130,7 @@
                         display: block;
                         width: 26px;
                         height: 26px;
-                        background: url('../../../../../../../../theme/assets/sprite.png') no-repeat -214px -80px;
+                        background: url('../../theme/assets/sprite.png') no-repeat -214px -80px;
                     }
                 }
                 &:nth-child(3) {

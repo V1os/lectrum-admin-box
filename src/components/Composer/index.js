@@ -6,7 +6,7 @@ import { EditorState } from 'draft-js';
 // Instruments
 import Styles from './styles.scss';
 import { Editor } from 'react-draft-wysiwyg';
-import '../../../../../../../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import '../../theme/react-draft-wysiwyg.css';
 
 export default class Composer extends Component {
     static propTypes = {

@@ -4,7 +4,7 @@ import { string, bool } from 'prop-types';
 
 //Instruments
 import Styles from './styles.scss';
-import Search from './../../../.././../Search';
+import Search from '../../components/Search';
 
 const BoxHead = (props) => {
     const { search: hasSearch = true, route } = props;

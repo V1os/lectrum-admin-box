@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 
 // Instrument
 import Styles from './styles.scss';
-import EmailSideBar from './components/EmailSideBar';
-import EmailBox from './components/EmailBox';
+import EmailSideBar from '../../components/EmailSideBar';
+import EmailBox from '../../components/EmailBox';
 import faker from 'faker';
 import moment from 'moment/moment';
 

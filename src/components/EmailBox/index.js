@@ -4,8 +4,8 @@ import { array, string, func, number } from 'prop-types';
 
 //Instruments
 import Styles from './styles.scss';
-import BoxHead from './components/BoxHead';
-import BoxContent from './components/BoxContent';
+import BoxHead from '../BoxHead';
+import BoxContent from '../BoxContent';
 
 export default class EmailBox extends Component {
     static propTypes = {

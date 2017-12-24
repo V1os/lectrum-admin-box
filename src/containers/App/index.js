@@ -7,7 +7,7 @@ import Catcher from '../../components/Catcher';
 import Styles from './styles.scss';
 import Head from '../../components/Head';
 import SideMenu from '../../components/SideMenu';
-import Email from '../../components/Email';
+import Email from '../Email';
 
 const options = {
     firstName: 'Vladimir',

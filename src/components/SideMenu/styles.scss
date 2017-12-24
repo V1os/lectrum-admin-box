@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     width: 265px;
+    min-width: 265px;
     padding-top: 32px;
     background-color: $colorSideBG;
 }

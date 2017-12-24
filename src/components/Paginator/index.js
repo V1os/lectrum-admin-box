@@ -24,12 +24,22 @@ const Paginator = (props) => {
             <div>
                 <p>
                     <label htmlFor = 'all'>
-                        <input id = 'all' name = 'all' type = 'checkbox' onChange = { selectAll } />
+                        <input
+                            id = 'all'
+                            name = 'all'
+                            type = 'checkbox'
+                            onChange = { selectAll }
+                        />
                         <span>&nbsp;</span>
                         Select All
                     </label>
                     <label htmlFor = 'is-read'>
-                        <input id = 'is-read' name = 'is-read' type = 'checkbox' onChange = { selectIsRead } />
+                        <input
+                            id = 'is-read'
+                            name = 'is-read'
+                            type = 'checkbox'
+                            onChange = { selectIsRead }
+                        />
                         <span>&nbsp;</span>
                         Mark all is read
                     </label>

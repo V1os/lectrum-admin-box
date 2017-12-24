@@ -4,8 +4,8 @@ import { array, func, string, number } from 'prop-types';
 
 //Instrument
 import Styles from './styles.scss';
-import Inbox from './components/Inbox';
-import Composer from './components/Composer';
+import Inbox from '../Inbox';
+import Composer from '../Composer';
 
 export default class BoxContent extends Component {
     static propTypes = {
