@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 // Instrument
 import Styles from './styles.scss';
-import SideMenuItem from '../../components/SideMenuItem';
+import SideMenuItem from '../SideMenuItem';
 
 export default class SideMenu extends Component {
     state = {

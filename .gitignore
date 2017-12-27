@@ -21,3 +21,4 @@ yarn-error.log*
 
 #custom
 .idea
+__snapshots__

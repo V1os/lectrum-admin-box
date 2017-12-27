@@ -20,6 +20,7 @@
     margin-right: 12px;
     border: 2px solid $colorGrey;
     border-radius: 25%;
+    cursor: pointer;
 }
 
 .paginate {
@@ -131,6 +132,7 @@
                         width: 26px;
                         height: 26px;
                         background: url('../../theme/assets/sprite.png') no-repeat -214px -80px;
+                        cursor: pointer;
                     }
                 }
                 &:nth-child(3) {

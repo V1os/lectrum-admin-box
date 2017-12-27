@@ -14,8 +14,14 @@ export default class Composer extends Component {
     };
 
     state = {
-        editorState: EditorState.createEmpty(),
+        editorState: {},
     };
+
+    componentWillMount () {
+        this.setState(() => ({
+            editorState: EditorState.createEmpty(),
+        }));
+    }
 
     onEditorStateChange = (editorState) => {
         this.setState({
@@ -27,7 +33,7 @@ export default class Composer extends Component {
         const { editorState } = this.state;
 
         return (
-            <div className = { Styles.composer }>
+            <section className = { Styles.composer }>
                 <div className = { Styles.to }>
                     <p>To</p>
                     <div>
@@ -67,7 +73,7 @@ export default class Composer extends Component {
                     </button>
                     <button>Send Message</button>
                 </div>
-            </div>
+            </section>
         );
     }
 }

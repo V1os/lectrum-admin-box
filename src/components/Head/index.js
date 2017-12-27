@@ -21,9 +21,9 @@ export default class Head extends Component {
                 <div className = { Styles.logo } />
                 <div className = { Styles.line }>
                     <div className = { Styles.notify }>
-                        <span />
-                        <span />
-                        <span />
+                        <span className = { Styles.noti } />
+                        <span className = { Styles.email } />
+                        <span className = { Styles.favori } />
                     </div>
                     <div className = { Styles.lineEnd }>
                         <Search mode = { 'dark' } />

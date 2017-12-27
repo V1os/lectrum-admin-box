@@ -15,12 +15,20 @@ export default class Inbox extends Component {
     constructor () {
         super();
         this.linkPage = ::this._linkPage;
+        this.prepareData = ::this._prepareData;
     }
 
     state = {
         perPage: 25,
         offset:  0,
+        data:    [],
     };
+
+    componentWillMount () {
+        this.setState(() => ({
+            data: this.prepareData(),
+        }));
+    }
 
     _linkPage (offset, perPage = 25) {
         if (this.props.total < offset * perPage) {
@@ -34,18 +42,20 @@ export default class Inbox extends Component {
         this.setState(() => ({ perPage, offset }));
     }
 
-    prepareData = () => {
+    _prepareData () {
         const { context } = this.props;
         const { perPage, offset } = this.state;
 
         return context.slice(offset * perPage, perPage * offset + perPage);
-    };
+    }
 
     render () {
+        const { data } = this.state;
+
         return (
             <section className = { Styles.inbox }>
                 <Paginator
-                    context = { this.prepareData() }
+                    context = { data }
                     linkPage = { this.linkPage }
                     options = { { ...this.state } }
                 />
