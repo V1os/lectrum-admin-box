@@ -91,7 +91,7 @@
                 border-bottom: 1px solid $colorGrey;
                 text-overflow: ellipsis;
                 white-space: nowrap;
-                &:first-child {
+                &:first-child, &:nth-child(2) {
                     display: table-cell;
                     min-width: 50px;
                     height: 61px;
@@ -101,6 +101,12 @@
                         position: relative;
                         z-index: -9999;
                         width: 0;
+                    }
+                }
+                &:first-child {
+                    padding-left: 25px;
+                    vertical-align: middle;
+                    input:first-child {
                         &:checked + span::before {
                             @include inputChecked();
                         }
@@ -110,21 +116,11 @@
                     }
                 }
                 &:nth-child(2) {
-                    display: table-cell;
-                    min-width: 50px;
-                    height: 61px;
                     margin-top: 1px;
                     vertical-align: sub;
                     input:first-child {
-                        position: relative;
-                        z-index: -9999;
-                        width: 0;
-                        &:checked + span::before {
-                            display: block;
-                            position: absolute;
-                            width: 26px;
-                            height: 26px;
-                            background-position: -184px -80px;
+                        &:checked + span {
+                            background-position: -185px -81px;
                         }
                     }
                     span {
@@ -146,9 +142,12 @@
                     text-align: right;
                 }
             }
-            &:hover {
-                background-color: $colorWhite;
+            &:hover td:first-child {
+                background: url('./../../theme/assets/grippy_large_dark.png') no-repeat 5px 50%;
             }
+        }
+        tr.active {
+            background-color: $colorWhite;
         }
     }
 }

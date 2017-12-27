@@ -24,24 +24,27 @@ export default class Email extends Component {
     genData = () => {
         faker.locale = 'ru';
         let time = moment();
+        const { data } = this.state;
 
-        if (this.state.data.length === 0) {
+        if (data.length === 0) {
             for (let i = 0; i < this.state.total; i++) {
                 const diff = Math.random() * 10;
 
                 time = moment()
                     .set(time)
                     .add(-diff, 'day');
-                this.state.data.push({
+                data.push({
                     id:        i,
                     subject:   faker.commerce.productName(),
                     shortText: faker.hacker.phrase(),
                     date:      moment(time).format('ll'),
+                    checked:   false,
+                    favorite:  false,
                 });
             }
         }
 
-        return this.state.data;
+        return data;
     };
 
     _setRoute (route) {
@@ -51,6 +54,8 @@ export default class Email extends Component {
     }
 
     render () {
+        const context = this.genData();
+
         return (
             <section className = { Styles.email }>
                 <div>
@@ -60,7 +65,7 @@ export default class Email extends Component {
                 <div>
                     <EmailSideBar onRoute = { this.setRoute } />
                     <EmailBox
-                        context = { this.genData() }
+                        context = { context }
                         routeCurrent = { this.state.routeCurrent }
                         total = { this.state.total }
                         onRoute = { this.setRoute }

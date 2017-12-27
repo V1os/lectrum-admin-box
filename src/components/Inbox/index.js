@@ -16,6 +16,9 @@ export default class Inbox extends Component {
         super();
         this.linkPage = ::this._linkPage;
         this.prepareData = ::this._prepareData;
+        this.selectAll = ::this._selectAll;
+        this.selectFav = ::this._selectFav;
+        this.selectRow = ::this._selectRow;
     }
 
     state = {
@@ -25,28 +28,79 @@ export default class Inbox extends Component {
     };
 
     componentWillMount () {
-        this.setState(() => ({
-            data: this.prepareData(),
-        }));
+        this.linkPage(0);
+    }
+
+    _prepareData (offset, perPage) {
+        const { context } = this.props;
+
+        return context.slice(offset * perPage, perPage * offset + perPage);
     }
 
     _linkPage (offset, perPage = 25) {
-        if (this.props.total < offset * perPage) {
+        const { total } = this.props;
+
+        if (total < offset * perPage) {
             return;
         }
-
         if (offset < 0) {
             return;
         }
-
-        this.setState(() => ({ perPage, offset }));
+        this.setState(() => ({
+            perPage,
+            offset,
+            data: this.prepareData(offset, perPage),
+        }));
     }
 
-    _prepareData () {
+    _selectAll (checked) {
         const { context } = this.props;
-        const { perPage, offset } = this.state;
 
-        return context.slice(offset * perPage, perPage * offset + perPage);
+        this.setState(() => ({
+            data: context.map((row) => {
+                row.checked = checked;
+
+                return row;
+            }),
+        }));
+    }
+
+    _selectRow (id, checked) {
+        const { offset, perPage } = this.state;
+        let data = this.prepareData(offset, perPage);
+
+        // because index array equal to value id
+        if (data[id] !== undefined) {
+            data[id].checked = checked;
+        } else {
+            data = data.map((row) => {
+                if (id === row.id) {
+                    row.checked = checked;
+                }
+
+                return row;
+            });
+        }
+        this.setState(() => ({ data }));
+    }
+
+    _selectFav (id, checked) {
+        const { offset, perPage } = this.state;
+        let data = this.prepareData(offset, perPage);
+
+        // because index array equal to value id
+        if (data[id] !== undefined) {
+            data[id].favorite = checked;
+        } else {
+            data = data.map((row) => {
+                if (id === row.id) {
+                    row.favorite = checked;
+                }
+
+                return row;
+            });
+        }
+        this.setState(() => ({ data }));
     }
 
     render () {
@@ -58,6 +112,9 @@ export default class Inbox extends Component {
                     context = { data }
                     linkPage = { this.linkPage }
                     options = { { ...this.state } }
+                    selectAll = { this.selectAll }
+                    selectFav = { this.selectFav }
+                    selectRow = { this.selectRow }
                 />
             </section>
         );
